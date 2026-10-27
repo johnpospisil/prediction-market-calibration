@@ -1,0 +1,37 @@
+[project]
+name = "pmc"
+version = "0.1.0"
+description = "Are prediction markets well calibrated? Kalshi, Polymarket and Manifold, plus the 2026 midterms."
+authors = [
+    { name = "johnpospisil", email = "audiofreak7@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "duckdb>=2.0.0",
+    "httpx>=0.28.1",
+    "matplotlib>=3.11.2",
+    "plotly>=7.1.0",
+    "polars>=2.1.0",
+    "pyarrow>=26.0.0",
+    "pydantic>=2.14.1",
+    "scipy>=1.18.1",
+    "statsmodels>=0.15.0",
+    "tenacity>=9.2.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.3",
+]
