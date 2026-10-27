@@ -7,28 +7,31 @@ Status log (update when sent or answered):
 | Kalshi | | (verify contact; try the API/developer support channel in the Kalshi help center, or support@kalshi.com) | |
 | Polymarket | | (verify contact; try support@polymarket.com, or the contact listed in the Terms of Use) | |
 
+Tip: before sending, rewrite a sentence or two in your own words and add one detail only you would know (e.g. how you got interested in this).
+
 ---
 
 ## Kalshi
 
-**Subject:** Written permission request: non-commercial research on market calibration
+**Subject:** Permission to use Kalshi data for a research project
 
-Hello Kalshi team,
+Hi,
 
-I'm an independent data scientist working on a non-commercial public research project: *"Are Prediction Markets Well Calibrated?"* It asks a simple question. When a market prices an event at 70%, does that event happen about 70% of the time? The project compares several platforms across thousands of resolved markets and includes the 2026 midterms.
+I'm working on a personal research project, not a commercial one, that looks at how well calibrated prediction markets are. Basically: when a market says 70%, does the thing actually happen about 70% of the time? I'd like to include Kalshi alongside a couple of other platforms, and the 2026 midterms too.
 
-Your Data Terms of Use and Developer Agreement require prior written authorization for this kind of use, so I'm asking for that permission. Specifically, I would like to:
+I read your Data Terms of Use and the Developer Agreement, and as far as I can tell I need written permission for this, so I'm asking.
 
-1. Retrieve settled-market metadata, hourly candlesticks and trades through your public API (historical endpoints included), within your rate limits.
-2. Store this data privately for analysis. I would **not** redistribute raw or cached Kalshi data sets.
-3. Publish **aggregate results only**: calibration curves, Brier scores and summary charts, with "Source: Kalshi" attribution and a not-investment-advice disclaimer.
-4. Use AI-assisted coding and analysis tools (e.g. an AI coding assistant) to write the analysis code and process the data. This would not include training any model on Kalshi data.
+What I'd want to do:
+- Pull settled markets, hourly candlesticks and trades from the public API, staying within your rate limits
+- Keep the data on my own machine. I won't post or share the raw data anywhere
+- Publish only summary results (charts and accuracy scores), credited to Kalshi, with a note that it isn't investment advice
+- Use AI coding tools to help write the analysis code. No model would be trained on your data
 
-The code will be open source, with no raw data in the repository. I'm happy to share the draft with you before publication, to accept any attribution or scope conditions you prefer, and to delete the stored data when the project ends.
+The code will be on GitHub, but with no Kalshi data in it. I'm happy to send you a draft before anything goes out, and to delete the data once I'm done.
 
-The first part is planned for around November 20, 2026, so a reply in the next couple of weeks would be greatly appreciated.
+I'm hoping to publish the first part around November 20, so if you're able to get back to me in the next week or two, that would be great.
 
-Thank you,
+Thanks,
 John Pospisil
 github.com/johnpospisil/prediction-market-calibration
 
@@ -36,23 +39,24 @@ github.com/johnpospisil/prediction-market-calibration
 
 ## Polymarket
 
-**Subject:** Written permission request: non-commercial research on market calibration
+**Subject:** Permission to use Polymarket data for a research project
 
-Hello Polymarket team,
+Hi,
 
-I'm an independent data scientist working on a non-commercial public research project: *"Are Prediction Markets Well Calibrated?"* It asks whether events priced at X% happen about X% of the time, across thousands of resolved markets on several platforms, and includes the 2026 midterms.
+I'm doing a personal, non-commercial research project on whether prediction markets are well calibrated. In other words, do events priced at 70% happen about 70% of the time? I'm comparing a few platforms and looking at the 2026 midterms.
 
-Section 4.2 of your Terms of Use asks for written agreement before data is accessed through your API, so I'm requesting permission to:
+Section 4.2 of your Terms of Use says I need written agreement to use the API for this, so I wanted to ask first.
 
-1. Retrieve resolved-market metadata (Gamma API) and price history (CLOB `prices-history`) within your rate limits.
-2. Store this data privately for analysis, without redistributing raw data sets.
-3. Publish **aggregate results only** (calibration curves, Brier scores, summary charts), attributed to Polymarket, with a not-investment-advice disclaimer. No individual trader or wallet would be named.
-4. Use AI-assisted coding and analysis tools to write the analysis code and process the data, without training any model on it.
+What I'd want to do:
+- Pull resolved markets from the Gamma API and price history from the CLOB prices-history endpoint, within your rate limits
+- Keep the data on my own machine, not shared or reposted
+- Publish only summary results (charts and accuracy scores), credited to Polymarket. I wouldn't name any trader or wallet
+- Use AI coding tools to help write the analysis code. No model would be trained on the data
 
-For trade-level analysis I plan to use public Polygon on-chain data. I'd welcome your view on that as well.
+For trade-level analysis I'm planning to use public Polygon on-chain data. If you have any concerns about that, I'd like to hear them.
 
-The code will be open source, with no raw data in the repository. I'm glad to share a draft before publication. The first part is planned for around November 20, 2026.
+The code will be on GitHub, with no raw data in it, and I'm glad to share a draft before publishing. The first part should be out around November 20.
 
-Thank you,
+Thanks,
 John Pospisil
 github.com/johnpospisil/prediction-market-calibration
