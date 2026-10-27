@@ -4,7 +4,7 @@ Status log (update when sent or answered):
 
 | Platform | Sent | To | Reply |
 |---|---|---|---|
-| Kalshi | | support@kalshi.com (if no reply in ~5 business days, forward to institutional@kalshi.com) | |
+| Kalshi | 2026-10-27 | support@kalshi.com (if no reply in ~5 business days, forward to institutional@kalshi.com) | |
 
 Tip: before sending, rewrite a sentence or two in your own words and add one detail only you would know (e.g. how you got interested in this).
 
