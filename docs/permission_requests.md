@@ -37,25 +37,19 @@ github.com/johnpospisil/prediction-market-calibration
 
 ---
 
-## Polymarket
+## Polymarket (optional courtesy note)
 
-**Subject:** Permission to use Polymarket data for a research project
+Not required. The full Terms of Use (effective 2026-08-11) restrict Data access only for "Capital Market Clients" and market data distributors. Send this only if you want a heads-up on record.
+
+**Subject:** Heads-up: research project using Polymarket's public API
 
 Hi,
 
-I'm doing a personal, non-commercial research project on whether prediction markets are well calibrated. In other words, do events priced at 70% happen about 70% of the time? I'm comparing a few platforms and looking at the 2026 midterms.
+Just a quick note. I'm doing a personal, non-commercial research project on whether prediction markets are well calibrated (do events priced at 70% happen about 70% of the time?). I'm comparing a few platforms, including the 2026 midterms.
 
-Section 4.2 of your Terms of Use says I need written agreement to use the API for this, so I wanted to ask first.
+I'm using the public Gamma and CLOB APIs at modest rates, keeping the raw data private, and publishing only summary charts and scores, credited to Polymarket. No trader or wallet will be named. If any of that is a problem, please let me know.
 
-What I'd want to do:
-- Pull resolved markets from the Gamma API and price history from the CLOB prices-history endpoint, within your rate limits
-- Keep the data on my own machine, not shared or reposted
-- Publish only summary results (charts and accuracy scores), credited to Polymarket. I wouldn't name any trader or wallet
-- Use AI coding tools to help write the analysis code. No model would be trained on the data
-
-For trade-level analysis I'm planning to use public Polygon on-chain data. If you have any concerns about that, I'd like to hear them.
-
-The code will be on GitHub, with no raw data in it, and I'm glad to share a draft before publishing. The first part should be out around November 20.
+The first part should be out around November 20. I'm happy to send a link when it's live.
 
 Thanks,
 John Pospisil
