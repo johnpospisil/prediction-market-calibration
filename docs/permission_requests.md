@@ -17,7 +17,7 @@ Tip: before sending, rewrite a sentence or two in your own words and add one det
 
 Hi,
 
-I'm working on a personal research project, not a commercial one, that looks at how well calibrated prediction markets are. Basically: when a market says 70%, does the thing actually happen about 70% of the time? I'd like to include Kalshi alongside a couple of other platforms, and the 2026 midterms too.
+I'm working on a personal research project, not a commercial one, that checks whether prediction markets are well calibrated. Basically: when a market says 70%, does the thing actually happen about 70% of the time? I'd like to include Kalshi alongside a couple of other platforms, and the 2026 midterms too.
 
 I read your Data Terms of Use and the Developer Agreement, and as far as I can tell I need written permission for this, so I'm asking.
 

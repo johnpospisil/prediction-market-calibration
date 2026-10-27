@@ -12,3 +12,4 @@ data/processed/*
 report/_site/
 report/.quarto/
 report/*_files/
+permission_requests.md
