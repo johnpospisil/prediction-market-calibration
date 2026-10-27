@@ -138,7 +138,7 @@ Copy each prompt into Claude Code in order. Track A is this repo; Track B is Pro
 **Checkpoint:** a draft link and the reading-grade score of the main text (target ≤ grade 10). Ask: send to the reviewer now? Which pieces should be cut?
 
 ### Prompt 13: QA + publish Part 1 (Nov 17–20)
-> Run the `data:validate-data` checklist across the analysis. Reproduce from a clean clone with `make all`. Re-check platform terms and regulatory status. Incorporate reviewer feedback if received. Publish to GitHub Pages. Draft distribution posts per spec §9 (a Hacker News title, a Bluesky/Twitter thread, a forecasting-Substack pitch, a Manifold community post).
+> Run the `data:validate-data` checklist across the analysis. Reproduce from a clean clone with `make all`. Re-check platform terms and regulatory status. Incorporate reviewer feedback if received. Publish to GitHub Pages. Draft distribution posts per spec §9 (a Hacker News title, a Bluesky/Twitter thread, a forecasting-Substack pitch, a Manifold community post). Also draft a short, friendly note to Polymarket with the published link ("here's what I found using your public data"). No permission is needed; it's relationship-building for future data or press contact.
 
 **Checkpoint:** the live URL, QA results, and the post drafts for my approval. Nothing is posted without my sign-off.
 
