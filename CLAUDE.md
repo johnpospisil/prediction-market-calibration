@@ -161,4 +161,5 @@ Copy each prompt into Claude Code in order. Track A is this repo; Track B is Pro
 
 ## Status
 
-- 2026-10-27: Plan written. Next: Prompt 0.
+- 2026-10-27: Plan written.
+- 2026-10-27: Prompt 0 done. Public repos: github.com/johnpospisil/prediction-market-calibration and github.com/johnpospisil/midterm-polling-2026 (Python 3.13, uv, smoke tests pass). Next: Prompt 1.
