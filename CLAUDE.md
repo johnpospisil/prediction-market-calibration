@@ -23,6 +23,9 @@ Act as a senior data scientist whose priority is making results understandable t
 | Scheduled snapshots | GitHub Actions cron (both repos) |
 | Release | **Two parts**: Part 1 "Are markets calibrated?" (~Nov 20); Part 2 "Polls vs markets: who got 2026 right?" (~Dec 16, joint with P24) |
 | Venue | Quarto site on GitHub Pages, with the interactive explorer embedded |
+| Terms (2026-10-27) | **Compliant core**: Manifold (API, non-commercial research) + Polymarket via **on-chain data only** (no Gamma/CLOB/data-api bulk pulls). **Kalshi only if written permission arrives**; PredictIt likewise. Permission requests: `docs/permission_requests.md`. Publish aggregates only; never commit raw platform data. |
+| On-chain route | **Dune** (decoded Polymarket tables for trades and market details); API key stored as GitHub secret `DUNE_API_KEY`. Check Dune's terms on exporting results. |
+| Data location | `PMC_DATA_DIR` env var (default `./data`), so the data can move to an external drive (Drive3) if it outgrows the internal disk |
 
 ## Timeline
 
@@ -74,10 +77,10 @@ Copy each prompt into Claude Code in order. Track A is this repo; Track B is Pro
 
 **Checkpoint:** a one-screen table (platform × access/auth/history depth/identities/terms risk). Flag any terms that block publishing derived data. Ask: should we create a Kalshi account and API key if needed? Is a Dune account OK?
 
-### Prompt 2: Midterm market snapshotter, live by Oct 29 ⚠️
-> Build `src/pmc/ingest/snapshot.py`: discover every 2026 midterm market (Senate, governor, House seats, chamber control, popular-vote and turnout markets) on Kalshi, Polymarket, Manifold and PredictIt (if available). For each market, snapshot best bid/ask, last/mid price, volume, open interest and top-of-book depth, with `fetched_at`. Keep a registry `data/reference/midterm_markets.csv` (platform, market id, race id like `SEN-PA-2026`, side). Add a GitHub Actions workflow that runs daily (and on manual dispatch) and commits gzipped output to a `snapshots` branch. Run it once now. Note in DATA.md which of this data can be backfilled later and which can't (e.g. order-book depth).
+### Prompt 2: Midterm market registry + compliant snapshotter (Oct 28–29)
+> Revised after Prompt 1's terms review. Market prices are backfillable, so this prompt is about the **race registry** and compliant capture only. (1) Use Manifold's API and Dune's Polymarket market-details tables (not Polymarket's own APIs) to build `data/reference/midterm_markets.csv` (platform, market id, race id like `SEN-PA-2026`, side) for Senate, governor, competitive House seats, chamber control and popular vote. The race ids must match Project 24. (2) Write `ingest/snapshot.py` for Manifold midterm markets (probability, volume, bettor count, `fetched_at`). (3) Add a daily GitHub Actions workflow that runs in the public repo but writes output to a **private** repo `pmc-snapshots` (deploy key or fine-grained token as a secret), never to the public repo. Run it once now. Kalshi and Polymarket API snapshots are added only if permission arrives.
 
-**Checkpoint:** the first snapshot's per-platform market counts, a link to the green workflow run, and the registry rows for 3 sample races. Ask: should any race types be added or dropped?
+**Checkpoint:** registry counts by platform and race type, 3 sample races, and a link to the green workflow run. Ask: should any race types be added or dropped?
 
 ### Prompt B1 (Track B): Polls & forecasts snapshotter, live by Oct 29 ⚠️
 > In `../midterm-polling-2026`: write its CLAUDE.md from spec 24 (same voice and checkpoint rules as this file). Then build a daily GitHub Actions snapshotter capturing (a) race-level polling averages and (b) forecast-model win probabilities from public sources that are currently active for 2026 (research which ones exist; check each one's terms and robots.txt), plus (c) Wikipedia 2026 poll tables (CC BY-SA). Use the same race ids as `data/reference/midterm_markets.csv` in Project 34. Run once now.
@@ -85,12 +88,12 @@ Copy each prompt into Claude Code in order. Track A is this repo; Track B is Pro
 **Checkpoint:** a list of sources with their terms status (OK / unclear / no) and race coverage per source. Ask me which forecasters to include and whether to skip any source whose terms are unclear.
 
 ### Prompt 3: Election-night high-frequency mode (by Nov 2) ⚠️
-> Add an election-window workflow for both repos: from Nov 3 18:00 ET to Nov 5 06:00 ET, snapshot midterm markets every 5–10 min. GitHub cron is best-effort and can be delayed, so use chained ~5h jobs that loop internally. Capture Polymarket on-chain trades for midterm markets over the same window (Oct 20–Nov 10) via the method chosen in prompt 1. Do a 30-minute dry run today.
+> Add an election-window workflow for both repos: from Nov 3 18:00 ET to Nov 5 06:00 ET, snapshot Manifold midterm markets and P24's live forecast sources every 5–10 min, writing to the private snapshot repos. GitHub cron is best-effort and can be delayed, so use chained ~5h jobs that loop internally. Polymarket election-window trades (Oct 20–Nov 10) are pulled from Dune afterwards, since on-chain data is permanent. Do a 30-minute dry run today.
 
 **Checkpoint:** dry-run row counts per interval with no gaps, and estimated storage for the full window. Confirm the auto-stop date.
 
 ### Prompt 4: Historical ingest (Oct 30–Nov 1)
-> Implement `ingest/manifold.py`, `polymarket.py`, `kalshi.py` and `polygon_trades.py` to pull **all resolved markets** with metadata, resolution and full price history (hourly where available, else daily), cached and resumable. Polymarket trades come from on-chain data with trader addresses. Run the full backfill in the background and report progress.
+> Implement `ingest/manifold.py` (bootstrap from the July 2024 bulk dumps, then top up through the API; keep only `token == MANA`) and `polygon_trades.py` + `polymarket.py` via **Dune** (market details, resolutions, trades with wallet addresses; build hourly price series from fills). `kalshi.py` is built only if written permission has arrived (historical endpoints; exclude `KXMVE` parlay markets). Read the data root from `PMC_DATA_DIR`. Cache, make it resumable, and run the full backfill in the background with progress reports. Check Dune's terms and export limits first.
 
 **Checkpoint:** resolved-market counts by platform × year, total GB, and one sample price-path chart per platform. Ask: is there a start-date cutoff (e.g. drop pre-2021 Polymarket)?
 
